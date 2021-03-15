@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit_content</title>
+</head>
+<body>
+{% extends 'learning_logs/base.html' %}
+{% block content %}
+  <h2><p>编辑内容</p></h2>
+  <div class="panel-default">
+    <div class="panel-heading">
+      <h3>
+        <a href="{% url 'square:title' title.id %}">标题：{{title}}</a>
+      </h3>
+      <h4>
+        <form action="{% url 'square:edit_content' content.id %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name="submit">保存编辑</button>
+        </form>
+      </h4>
+    </div>
+  </div>
+{% endblock content %}
+</body>
+</html>

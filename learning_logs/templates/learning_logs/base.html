@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Learning_Log</title>
+    <title>学习日志</title>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 </head>
@@ -19,19 +19,25 @@ data-toggle="collapse" data-target="#navbar"
 aria-expanded="false" aria-controls="navbar">
 </button>
   <a class="navbar-brand" href="{% url 'learning_logs:index' %}">
-Learning Log</a>
+学习日志主页(破服务器反应慢，如遇卡顿请等待）</a>
 </div>
   <div id="navbar" class="navbar-collapse collapse">
   <ul class="nav navbar-nav">
-  <li><a href="{% url 'learning_logs:topics' %}">Topics</a></li>
+  <li><a href="{% url 'learning_logs:topics' %}">私人领域</a></li>
+  <li><a href="{% url 'square:titles' %}">公共空间</a></li>
+  <li><a href="{% url 'blog:article_list' %}">Blog</a> </li>
 </ul>
   <ul class="nav navbar-nav navbar-right">
+  <audio autoplay="True" loop="True" controls>
+      <source src="https://sharefs.yun.kugou.com/202103141252/ead33e4bc37e27882242fb8b797425cd/KGTX/CLTX001/13bf933da8ba64df2f0e215d5597a3a0.mp3" type="audio/mpeg">
+  Your browser does not support this audio format.
+</audio>
 {% if user.is_authenticated %}
-<li><a>Hello, {{ user.username }}.</a></li>
-<li><a href="{% url 'users:logout' %}">log out</a></li>
+<li><a>你好,欢迎 {{ user.username }}登录.</a></li>
+<li><a href="{% url 'users:logout' %}">下线</a></li>
 {% else %}
-<li><a href="{% url 'users:register' %}">register</a></li>
-<li><a href="{% url 'users:login' %}">log in</a></li>
+<li><a href="{% url 'users:register' %}">注册</a></li>
+<li><a href="{% url 'users:login' %}">登录</a></li>
 {% endif %}
   </ul>
 </div><!--/.nav-collapse -->

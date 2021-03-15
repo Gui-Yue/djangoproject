@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titles</title>
+</head>
+<body>
+{% extends "learning_logs/base.html" %}
+{% block header %}
+<h4><p>此处为公共区域，你所编辑的内容可以被任何人看到。(此页面不需要登录或注册即可使用)</p></h4>
+<h1>主题</h1>
+{% endblock header%}
+{% block content %}
+  <ul>
+    {% for title in titles %}
+    <li>
+        <h3><a href="{% url 'square:title' title.id %}">{{title}}</a></h3>
+        <p><h4>{{title.date_added|date:'M d, Y H:i'}}</h4></p>
+    </li>
+    {% empty %}
+      <li><h2>尚无内容</h2></li>
+    {% endfor %}
+  </ul>
+<h3><a href="{% url 'square:new_title' %}">添加新标题</a></h3>
+{% endblock content %}
+</body>
+</html>

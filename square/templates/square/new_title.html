@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New_Title</title>
+</head>
+<body>
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+  <P><h3>添加一个新的标题</h3></P>
+
+  <form action="{% url 'square:new_title' %}" method="post">
+      {% csrf_token %}
+<! 保护网站防止受到跨站请求伪造攻击>
+      {{form.as_p}}
+<! 自动创建显示表单的所有字符，as_p为修饰符，让django以段落形式渲染所有表单元素>
+      <button name="submit">添加标题</button>
+<! 创建一个提交的按钮>
+  </form>
+{% endblock content %}
+</body>
+</html>
