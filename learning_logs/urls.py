@@ -16,5 +16,6 @@ urlpatterns = [
     # 将匹配到的数字存储在变量名topic_id中,“?p<>”指匹配url中的值并存储到<>中，表达式\d+指与“//”中的任何整数都匹配
     url(r'^new_topic/$', views.new_topic, name='new_topic'),
     url(r'^new_entry/(?P<topic_id>\d+)/$', views.new_entry, name='new_entry'),
-    url(r'^edit_entry/(?P<entry_id>\d+)/$', views.edit_entry, name='edit_entry')
+    url(r'^edit_entry/(?P<entry_id>\d+)/$', views.edit_entry, name='edit_entry'),
+    path('topic_delete/<int:id>', views.topic_delete, name='topic_delete')
 ]
